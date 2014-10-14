@@ -8,7 +8,10 @@
 */ 
 
 function addition() {
-	// your code goes here!
+    var numberOne = parseFloat(document.getElementById('additionInput1').value);
+    var numberTwo = parseFloat(document.getElementById('additionInput2').value);
+    var sum = numberOne + numberTwo;
+    alert('The sum of ' + numberOne + ' and ' +numberTwo + ' = ' + sum);
 }
 
 /* --------------------------------------------------------- */
@@ -28,7 +31,16 @@ function addition() {
 */ 
 
 function vowelCounter() {
-	// your code goes here!
+    var phrase = document.getElementById('vowelInput').value;
+    var chars = phrase.toLowerCase().split("");
+    var sum = 0;
+    chars.sort();
+    chars.forEach(function(char) {
+        if (char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u') {
+            sum++;
+        }
+    });
+    alert('There were ' + sum + ' vowels');
 }
 
 /* --------------------------------------------------------- */
@@ -58,12 +70,24 @@ function vowelCounter() {
 	For extra functionality, track the number of guesses the user has made, and print that as part of the result.
 */ 
 
+var answer = Math.floor((Math.random() * 100) + 1);
+var numOfGuesses = 0;
+
 function submit() {
-	
+	var guess = parseFloat(document.getElementById('numberGuess').value);
+    numOfGuesses++;
+    if (guess == answer) {
+        document.getElementById('numberResult').innerHTML = 'Congratulations! You got it right in ' + numOfGuesses + ' tries! ';
+    } else if (guess > answer) {
+        document.getElementById('numberResult').innerHTML = 'Lower';
+    } else {
+        document.getElementById('numberResult').innerHTML = 'Higher';
+    }
 }
 
 function reset() {
-
+     answer = Math.floor((Math.random() * 100) + 1);
+    numOfGuesses = 0;
 }
 
 
